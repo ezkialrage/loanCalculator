@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      
+        <script type="text/javascript" src="js/loanCalc_cleaned.js" ></script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet"  type="text/css">
+        <title>The Loan Repayment Plan</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="The Loan Repayment Plan. A simple tool to accurately estimate how long it will take to repay your loans based on your given repayment ammount. Get a month by month breakdown of what your progress will be.">
+        <meta name="keywords" content="Loan, Loans, repayment, student loans, home loans, mortgage, mortgage loans, interest based loans, loan calculator, student loan calculator, debt calculator">
+        
+        <meta property="og:title" content="The Loan Repayment Plan" />
+        <meta property="og:site_name" content="The Loan Repayment Plan" />
+        <meta property="og:description" content="The Loan Repayment Plan. A simple tool to accurately estimate how long it will take to repay your loans based on your given repayment ammount. Get a month by month breakdown of what your progress will be." />
+        <meta property="og:url" content="http://www.loanrepaymentplan.com" />
+        <meta property="og:type" content="website" />
+        <meta property="fb:admins" content="100009632132827"/>
+        
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+        ga('create', 'UA-62011351-1', 'auto');
+        ga('send', 'pageview');
+      
+      </script>
+        
+    </head>
+    
+    <body>
+       
+       <div id="header">
+            <span id="menuButton"></span>
+            <span id="navLogo"></span>
+            <div id="menu" class="hide">
+                <a class="button smoothscroll" href=#entryLink> Info Entry</a>
+                <a class="button smoothscroll dNone" href=#outputLink> Statistics</a>
+                <a class="button smoothscroll dNone" href=#graphLink> Graphs</a>
+                <a class="button smoothscroll dNone" href=#monthLink> Month Breakdown</a>
+              
+                <a class="button smoothscroll " href=#faqLink> F.A.Q.</a>
+                
+            </div>
+        </div>
+        
+       
+        <div id="scrollToTop" class="hide">
+             <a class="button smoothscroll" href=#entryLink></a>
+        </div>
+        
+        
+        <div id="container">
+            
+            
+            <div class="googleAd">
+                <div class="googleAdCenter">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- calcAd -->
+                    <ins class="adsbygoogle"
+                         style="display:block;width:100%;height:100%"
+                         data-ad-client="ca-pub-2990540674196812"
+                         data-ad-slot="9477204084"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+             
+            
+        
+            <div class="halfContent" id="entryLink">
+                <div class="midInfo">
+                    <div class="midText">
+                        Welcome to The Loan Repayment Plan.  This site was born out of necessity and will assist you in planning for your future.  A lot of the student loan calculators don't focus on the "Repayment" aspect of loans; they usually just tell you how much you need to take out to finish college.  What about if you're already in repayment? That's where TLRP comes in.  
+                        <br /><br />
+                        The main goal of this site was to help college students get a gauge for how long they will be in debt once they start paying their loans off, but the tools can be used for anyone with any kind of debt (student loans, home loans, bank loans ect...).  To get started, enter your remaining loan amount, interest rate and how much you plan to spend each month and TLRP will do the rest!
+                    </div>
+                    <form>
+                       
+                        <div class="entryBlock">
+                            <span class="entryText">Current Loan ammount</span>
+                            <input type="text" class="inputText" name="currentLoanAmount" id="currentLoanAmount" placeholder="e.g.12000">
+                        </div>
+                        
+                        <div class="entryBlock">
+                            <span class="entryText">Interest Rate%</span> 
+                            <input type="text" class="inputText" name="interestRate" id="interestRate" placeholder="e.g. 4.875">
+                        </div>
+                        
+                        <div class="entryBlock">
+                            <span class="entryText">Monthly Payment Amount</span>
+                            <input  type="text" class="inputText" name="monthlyPaymentAmount" id="monthlyPaymentAmount" placeholder="e.g. 380">
+                        </div>
+                        
+                        <button  id="submitButton">Submit</button>
+                        <div id="estimatedDate"></div>
+                    </form>
+            </div>
+            </div>
+            
+            
+            <div class="halfContent dNone"  id="outputLink">
+                <div class="midInfo">
+                    <div class="midText">
+                        Here are some simple debt statistics on your loan based off of the information you've provided.  
+                    </div>
+                    <div id="outputInfo">
+                    
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="halfContent dNone" id="graphLink">
+                <div class="midInfo">
+                    <div class="midText">
+                        Below you will find a graph that displays a quick view summary of your loan over time.  You can hover over each line to get an exact month and balance. 
+                    </div>
+                    <div id="graphLoan" >
+                    
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="halfContent dNone" id="monthLink">
+                <div class="midInfo">
+                    <div class="midText">
+                        Here is a month by month breakdown of your loan over its repayment period.  Students can use this information for a quick glimpse at how long they might be in debt.  Seeing your loan on a month by month basis like this helps you understand where your money goes.  The more you pay upfront, the less interest you will pay down the line.  
+                    </div>
+                    <div id="tabTitle">Month by Month Loan Breakdown</div>
+                    <div id='monthInfo'>
+                        
+                        
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="halfContent"  id="faqLink">
+                <div class="midInfo">
+                   
+                    <div id="faq">
+                        Frequently Asked Questions
+                    </div>
+                </div>
+            </div>
+            
+            <div id='fbHolder'>
+                
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                
+                <div class="fb-comments" data-href="http://www.loanrepaymentplan.com" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+            </div>
+            
+            <div class="googleAd">
+                <div class="googleAdCenter">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- calcAd -->
+                    <ins class="adsbygoogle"
+                         style="display:block;width:100%;height:100%""
+                         data-ad-client="ca-pub-2990540674196812"
+                         data-ad-slot="9477204084"
+                         data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        
+        <div id="footer">
+                Questions? Contact us here! <a href="mailto:info@loanrepaymentplan.com">info@loanrepaymentplan.com</a> <br />&copy; 2015 The Loan Repayment Plan  ver. 1.02   
+        </div>
+        
+    </body>
+</html>
+
+
+
